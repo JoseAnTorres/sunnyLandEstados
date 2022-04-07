@@ -22,17 +22,17 @@ public class Rana : MonoBehaviour
     }
     private IEnumerator Saltar(Vector2 direccion)
     {
+        animador.SetBool("estaSaltando", true);
         Vector2 impulso = new(direccion.x * Random.Range(1f, maximoFuerzaImpulso), direccion.y);
         cuerpo.AddForce(impulso, ForceMode2D.Impulse);
         yield return new WaitForSeconds(1f);
+        animador.SetBool("estaSaltando", false);
     }
     private IEnumerator Mover()
     {
         while (true)
         {
-            animador.SetBool("estaSaltando", true);
             yield return StartCoroutine(Saltar(destino));
-            animador.SetBool("estaSaltando", false);
             yield return StartCoroutine(Descansar());
             CalcularNuevoDestino();
         }
