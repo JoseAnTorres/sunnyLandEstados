@@ -2773,6 +2773,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maximaTiempoDescanso: 2
+  puntos: 20
   camino:
   - {x: 5, y: 3}
   - {x: 1, y: 3}
@@ -3038,11 +3039,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe4040323c5e7c8419ff4baf8390a4ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maximaTiempoDescanso: 2
+  puntos: 10
   camino:
   - {x: 35, y: -0.2}
   - {x: 40, y: -0.2}
   maximaVelocidad: 5
-  maximaTiempoDescanso: 2
 --- !u!1 &634031861
 GameObject:
   m_ObjectHideFlags: 0
@@ -3105,7 +3107,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.5092165, y: 1}
+    m_SensorSize: {x: 1.8271812, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -3676,6 +3678,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maximaTiempoDescanso: 2
+  puntos: 10
   maximoFuerzaImpulso: 5
 --- !u!50 &1659541871
 Rigidbody2D:

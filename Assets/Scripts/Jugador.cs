@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(SpriteRenderer))]
@@ -26,6 +27,9 @@ public class Jugador : MonoBehaviour
     private LayerMask capaEscalera;
     private Collider2D sueloActual;
     public Vector2 VelocidadActual => cuerpo.velocity;
+
+    private int puntos;
+    private int vidas = 3;
 
     private MaquinaEstados maquinaEstados;
     public Estado parado;
@@ -161,6 +165,22 @@ public class Jugador : MonoBehaviour
         {
             estaEnEscalera = false;
             escaleraActual = null;
+        }
+    }
+
+    public void SumarPuntos(int cantidad)
+    {
+        puntos += cantidad;
+        Debug.Log($"Puntos: {puntos}");
+    }
+
+    public void QuitarVida()
+    {
+        vidas--;
+        Debug.Log($"Vidas: {vidas}");
+        if(vidas <= 0)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 }
