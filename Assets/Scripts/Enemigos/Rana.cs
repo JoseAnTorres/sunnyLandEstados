@@ -2,23 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Rana : MonoBehaviour
+public class Rana : Enemigo
 {
     [SerializeField] private float maximoFuerzaImpulso = 5.0f;
-    [SerializeField] private float maximoTiempoDescanso = 2.0f;
-    private Animator animador;
-    private SpriteRenderer figura;
     private Rigidbody2D cuerpo;
     private Vector2 destino;
     private readonly Vector2 saltoIzquierda = new(-0.5f, 5f);
     private readonly Vector2 saltoDerecha = new(0.5f, 5f);
-    private void Start()
+    protected override void Start()
     {
-        figura = GetComponent<SpriteRenderer>();
         cuerpo = GetComponent<Rigidbody2D>();
-        animador = GetComponent<Animator>();
         destino = saltoIzquierda;
-        StartCoroutine(Mover());
+        base.Start();
     }
     private IEnumerator Saltar(Vector2 direccion)
     {
@@ -28,7 +23,7 @@ public class Rana : MonoBehaviour
         yield return new WaitForSeconds(1f);
         animador.SetBool("estaSaltando", false);
     }
-    private IEnumerator Mover()
+    protected override IEnumerator Mover()
     {
         while (true)
         {
@@ -41,9 +36,5 @@ public class Rana : MonoBehaviour
     {
         destino = destino == saltoIzquierda ? saltoDerecha : saltoIzquierda;
         figura.flipX = destino.x > 0;
-    }
-    private IEnumerator Descansar()
-    {
-        yield return new WaitForSeconds(Random.Range(0f, maximoTiempoDescanso));
     }
 }

@@ -20,12 +20,20 @@ public class Saltando : Estado
         {
             maquinaEstados.CambiarEstado(jugador.parado);
         }
+        if (movimiento.x < 0)
+        {
+            jugador.VoltearFiguraX(true);
+        }
+        if (movimiento.x > 0)
+        {
+            jugador.VoltearFiguraX(false);
+        }
     }
 
     public override void ActualizarFisica()
     {
         base.ActualizarFisica();
-        jugador.Mover(jugador.VelocidadActual);
+        jugador.Mover(new Vector2(movimiento.x * jugador.Velocidad, jugador.VelocidadActual.y));
     }
 
     public override void Salir()
