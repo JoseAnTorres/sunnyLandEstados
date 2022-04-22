@@ -172,6 +172,7 @@ public class Jugador : MonoBehaviour
     {
         puntos += cantidad;
         Debug.Log($"Puntos: {puntos}");
+        UIManager.Instancia.ActualizarPuntos(puntos);
     }
 
     public void QuitarVida()
