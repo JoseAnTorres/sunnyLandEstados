@@ -2943,6 +2943,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puntos: {fileID: 382038882}
+  tiempo: {fileID: 481494470}
   retardoPuntos: 0.1
 --- !u!1 &634031861
 GameObject:
@@ -5249,7 +5250,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4779225309653791457, guid: d1552c31f73044341a93278d88e95f35, type: 3}
       propertyPath: tiempoNivel
-      value: 10
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 4779225309653791462, guid: d1552c31f73044341a93278d88e95f35, type: 3}
       propertyPath: m_Material
