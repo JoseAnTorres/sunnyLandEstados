@@ -30,6 +30,8 @@ public class Jugador : MonoBehaviour
 
     private int puntos;
     private int vidas = 3;
+    [SerializeReference] private int tiempoNivel;
+    private float tiempoInicio;
 
     private MaquinaEstados maquinaEstados;
     public Estado parado;
@@ -52,12 +54,16 @@ public class Jugador : MonoBehaviour
         paradoEnEscalera = new ParadoEnEscalera(this, maquinaEstados);
         moviendoEnEscalera = new MoviendoEnEscalera(this, maquinaEstados);
         maquinaEstados.Inicializar(parado);
+
+        tiempoInicio = Time.time;
     }
 
     private void Update()
     {
         maquinaEstados.EstadoActual.GestionarEntrada(movimiento, salto);
         maquinaEstados.EstadoActual.ActualizarLogica();
+
+        ComprobarTiempo();
     }
     private void FixedUpdate()
     {
@@ -181,6 +187,19 @@ public class Jugador : MonoBehaviour
         Debug.Log($"Vidas: {vidas}");
         if(vidas <= 0)
         {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+    }
+
+    private void ComprobarTiempo()
+    {
+        var tiempo = Time.time - tiempoInicio;
+        var tiempoRestante = tiempoNivel - (int)tiempo;
+        //Debug.Log($"Tiempo: {tiempoRestante / 60:00}:{tiempoRestante % 60:00}");
+        UIManager.Instancia.ActualizarTiempo(tiempoRestante);
+        if(tiempo >= tiempoNivel)
+        {
+            Debug.Log("Has perdido, se ha acabado el tiempo");
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
