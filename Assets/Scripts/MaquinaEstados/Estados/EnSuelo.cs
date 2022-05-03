@@ -9,7 +9,7 @@ public class EnSuelo : Estado
     public override void ActualizarLogica()
     {
         base.ActualizarLogica();
-        if (salto)
+        if (salto && jugador.EstaEnSuelo)
         {
             maquinaEstados.CambiarEstado(jugador.saltando);
         }

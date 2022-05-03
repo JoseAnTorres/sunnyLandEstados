@@ -16,10 +16,6 @@ public class Saltando : Estado
     public override void ActualizarLogica()
     {
         base.ActualizarLogica();
-        if (jugador.EstaEnSuelo)
-        {
-            maquinaEstados.CambiarEstado(jugador.parado);
-        }
         if (movimiento.x < 0)
         {
             jugador.VoltearFiguraX(true);
@@ -27,6 +23,10 @@ public class Saltando : Estado
         if (movimiento.x > 0)
         {
             jugador.VoltearFiguraX(false);
+        }
+        if (jugador.EstaEnSuelo)
+        {
+            maquinaEstados.CambiarEstado(jugador.parado);
         }
     }
 

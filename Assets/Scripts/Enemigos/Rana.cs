@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class Rana : Enemigo
 {
     [SerializeField] private float maximoFuerzaImpulso = 5.0f;
@@ -9,12 +10,13 @@ public class Rana : Enemigo
     private Vector2 destino;
     private readonly Vector2 saltoIzquierda = new(-0.5f, 5f);
     private readonly Vector2 saltoDerecha = new(0.5f, 5f);
-    protected override void Start()
-    {
+
+    protected override void Start() {
         cuerpo = GetComponent<Rigidbody2D>();
         destino = saltoIzquierda;
         base.Start();
     }
+
     private IEnumerator Saltar(Vector2 direccion)
     {
         animador.SetBool("estaSaltando", true);
@@ -32,9 +34,11 @@ public class Rana : Enemigo
             CalcularNuevoDestino();
         }
     }
+
     private void CalcularNuevoDestino()
     {
         destino = destino == saltoIzquierda ? saltoDerecha : saltoIzquierda;
         figura.flipX = destino.x > 0;
     }
+
 }

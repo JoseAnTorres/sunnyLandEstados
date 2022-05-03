@@ -10,9 +10,9 @@ using UnityEngine.SceneManagement;
 [RequireComponent(typeof(Animator))]
 public class Jugador : MonoBehaviour
 {
-    [SerializeField] private const float velocidad = 5.0f;
+    [SerializeField] private float velocidad = 5.0f;
     public float Velocidad => velocidad;
-    [SerializeField] private const float fuerzaSalto = 5.0f;
+    [SerializeField] private float fuerzaSalto = 5.0f;
     private Rigidbody2D cuerpo;
     private SpriteRenderer figura;
     private Animator animador;
@@ -29,8 +29,9 @@ public class Jugador : MonoBehaviour
     public Vector2 VelocidadActual => cuerpo.velocity;
 
     private int puntos;
-    private int vidas = 3;
-    [SerializeReference] private int tiempoNivel;
+    [SerializeField] private int vidas = 3;
+    [SerializeField] private int tiempoNivel;
+    [SerializeField] private int gemas = 9;
     private float tiempoInicio;
 
     private MaquinaEstados maquinaEstados;
@@ -185,9 +186,21 @@ public class Jugador : MonoBehaviour
     {
         vidas--;
         Debug.Log($"Vidas: {vidas}");
-        if(vidas <= 0)
+        UIManager.Instancia.ActualizarVidas(vidas);
+        if (vidas <= 0)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+    }
+
+    public void RecogerGema()
+    {
+        gemas--;
+        Debug.Log($"Gemas: {gemas}");
+        UIManager.Instancia.ActualizarGemas(gemas);
+        if (gemas <= 0)
+        {
+            Debug.Log("Recogidas todas las gemas -> Pasas de nivel.");
         }
     }
 
@@ -195,11 +208,10 @@ public class Jugador : MonoBehaviour
     {
         var tiempo = Time.time - tiempoInicio;
         var tiempoRestante = tiempoNivel - (int)tiempo;
-        //Debug.Log($"Tiempo: {tiempoRestante / 60:00}:{tiempoRestante % 60:00}");
         UIManager.Instancia.ActualizarTiempo(tiempoRestante);
-        if(tiempo >= tiempoNivel)
+        if (tiempo >= tiempoNivel)
         {
-            Debug.Log("Has perdido, se ha acabado el tiempo");
+            Debug.Log("Has perdido, se ha acabado el tiempo!!!!!");
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
