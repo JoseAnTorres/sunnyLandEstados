@@ -88,7 +88,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: PruebaExit
-  m_Speed: 1
+  m_Speed: -1
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 7472350091055978792}
@@ -118,7 +118,7 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: -7810829189929033074}
-    m_Position: {x: 320, y: 120, z: 0}
+    m_Position: {x: 350, y: 50, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 7089725992494306919}
     m_Position: {x: 330, y: 220, z: 0}
