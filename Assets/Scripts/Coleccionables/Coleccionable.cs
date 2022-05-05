@@ -8,7 +8,7 @@ public abstract class Coleccionable : MonoBehaviour
 {
     private Animator animador;
     private bool destruyendo = false;
-    protected abstract void Recoger(Jugador jugador);
+    protected abstract void Recoger();
     private void Start() 
     {
         animador = GetComponent<Animator>();
@@ -19,8 +19,7 @@ public abstract class Coleccionable : MonoBehaviour
         if (other.gameObject.CompareTag("Player") && !destruyendo)
         {
             destruyendo = true;
-            var jugador = other.gameObject.GetComponent<Jugador>();
-            Recoger(jugador);
+            Recoger();
             animador.SetTrigger("estaDestruyendo");
             Destroy(gameObject, 0.3f);
         }

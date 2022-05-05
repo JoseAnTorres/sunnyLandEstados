@@ -5,8 +5,8 @@ using UnityEngine;
 public class Cereza : Coleccionable
 {
     [SerializeField] private int puntos = 2;
-    protected override void Recoger(Jugador jugador)
+    protected override void Recoger()
     {
-        jugador.SumarPuntos(puntos);
+        Datos.Instancia.SumarPuntos(puntos);
     }
 }

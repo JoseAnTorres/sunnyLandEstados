@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(SpriteRenderer))]
@@ -28,12 +27,6 @@ public class Jugador : MonoBehaviour
     private Collider2D sueloActual;
     public Vector2 VelocidadActual => cuerpo.velocity;
 
-    private int puntos;
-    [SerializeField] private int vidas = 3;
-    [SerializeField] private int tiempoNivel;
-    [SerializeField] private int gemas = 9;
-    private float tiempoInicio;
-
     private MaquinaEstados maquinaEstados;
     public Estado parado;
     public Estado coriendo;
@@ -55,16 +48,12 @@ public class Jugador : MonoBehaviour
         paradoEnEscalera = new ParadoEnEscalera(this, maquinaEstados);
         moviendoEnEscalera = new MoviendoEnEscalera(this, maquinaEstados);
         maquinaEstados.Inicializar(parado);
-
-        tiempoInicio = Time.time;
     }
 
     private void Update()
     {
         maquinaEstados.EstadoActual.GestionarEntrada(movimiento, salto);
         maquinaEstados.EstadoActual.ActualizarLogica();
-
-        ComprobarTiempo();
     }
     private void FixedUpdate()
     {
@@ -172,47 +161,6 @@ public class Jugador : MonoBehaviour
         {
             estaEnEscalera = false;
             escaleraActual = null;
-        }
-    }
-
-    public void SumarPuntos(int cantidad)
-    {
-        puntos += cantidad;
-        Debug.Log($"Puntos: {puntos}");
-        UIManager.Instancia.ActualizarPuntos(puntos);
-    }
-
-    public void QuitarVida()
-    {
-        vidas--;
-        Debug.Log($"Vidas: {vidas}");
-        UIManager.Instancia.ActualizarVidas(vidas);
-        if (vidas <= 0)
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        }
-    }
-
-    public void RecogerGema()
-    {
-        gemas--;
-        Debug.Log($"Gemas: {gemas}");
-        UIManager.Instancia.ActualizarGemas(gemas);
-        if (gemas <= 0)
-        {
-            Debug.Log("Recogidas todas las gemas -> Pasas de nivel.");
-        }
-    }
-
-    private void ComprobarTiempo()
-    {
-        var tiempo = Time.time - tiempoInicio;
-        var tiempoRestante = tiempoNivel - (int)tiempo;
-        UIManager.Instancia.ActualizarTiempo(tiempoRestante);
-        if (tiempo >= tiempoNivel)
-        {
-            Debug.Log("Has perdido, se ha acabado el tiempo!!!!!");
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 }

@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Gema : Coleccionable
 {
-    protected override void Recoger(Jugador jugador)
+    protected override void Recoger()
     {
-        jugador.RecogerGema();
+        Datos.Instancia.RecogerGema();
     }
 }

@@ -18,6 +18,13 @@ public class UIManager : MonoBehaviour
         }
         Instancia = this;
     }
+    private void Start()
+    {
+        Datos.Instancia.OnTiempoActualizado += ActualizarTiempo;
+        Datos.Instancia.OnPuntosActualizado += ActualizarPuntos;
+        Datos.Instancia.OnVidasActualizado += ActualizarVidas;
+        Datos.Instancia.OnGemasActualizado += ActualizarGemas;
+    }
 
     public void ActualizarPuntos(int puntos)
     {

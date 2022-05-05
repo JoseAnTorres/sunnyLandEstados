@@ -36,19 +36,18 @@ public abstract class Enemigo : MonoBehaviour
             var izquierdaArriba = Physics2D.Raycast(new Vector2(centro.x - extents.x, centro.y + extents.y), Vector2.up, 0.2f);
             var centroArriba = Physics2D.Raycast(new Vector2(centro.x, centro.y + extents.y), Vector2.up, 0.2f);
             var derechaArriba = Physics2D.Raycast(new Vector2(centro.x + extents.x, centro.y + extents.y), Vector2.up, 0.2f);
-            var jugador = other.gameObject.GetComponent<Jugador>();
             if ((izquierdaArriba.collider && izquierdaArriba.collider.gameObject.CompareTag("Player")) || 
                 (centroArriba.collider && centroArriba.collider.gameObject.CompareTag("Player")) || 
                 (derechaArriba.collider && derechaArriba.collider.gameObject.CompareTag("Player")))
             {
-                jugador.SumarPuntos(puntos);
+                Datos.Instancia.SumarPuntos(puntos);
                 destruyendo = true;
                 animador.SetTrigger("estaMuriendo");
                 Destroy(gameObject, 0.25f);
             }
             else
             {
-                jugador.QuitarVida();
+                Datos.Instancia.QuitarVida();
             }
         }
     }
