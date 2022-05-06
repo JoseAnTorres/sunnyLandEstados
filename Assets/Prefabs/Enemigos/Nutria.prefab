@@ -121,7 +121,7 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.011962712, y: 0.14365226}
+  m_Offset: {x: -0.011962712, y: 0}
   m_Size: {x: 1.679021, y: 1.679021}
   m_Direction: 0
 --- !u!50 &4880473054392907716
@@ -157,7 +157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe4040323c5e7c8419ff4baf8390a4ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maximaTiempoDescanso: 2
+  maximoTiempoDescanso: 2
   puntos: 10
   camino:
   - {x: 35, y: -0.2}
