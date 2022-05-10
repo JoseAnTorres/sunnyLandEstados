@@ -17,7 +17,7 @@ public class Cargando : MonoBehaviour
 
     private void Update()
     {
-        cargando.SetText($"Cargando: {barraProgreso.value * 100:0}%");
+        cargando.SetText($"Cargando: {barraProgreso.value * 100:0WD}%");
     }
 
     private IEnumerator CargarMenu()
