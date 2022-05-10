@@ -34,6 +34,11 @@ public class Menu : MonoBehaviour
         creditosfull.SetBool("estaOculto", false);
     }
 
+    public void Jugar()
+    {
+
+    }
+
     public void Cerrar()
     {
         jugar.SetBool("estaOculto", false);
