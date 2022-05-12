@@ -11,6 +11,11 @@ public class Menu : MonoBehaviour
     //[SerializeField] private Animator prueba2;
     private void Start()
     {
+        MostrarBotones();
+    }
+
+    public void MostrarBotones()
+    {
         jugar.SetBool("estaOculto", false);
         creditos.SetBool("estaOculto", false);
         salir.SetBool("estaOculto", false);
@@ -22,6 +27,12 @@ public class Menu : MonoBehaviour
         creditos.SetBool("estaOculto", true);
         salir.SetBool("estaOculto", true);
         //prueba2.SetBool("estaOculto", true);
+    }
+    private void OcultarBotones()
+    {
+        jugar.SetBool("estaOculto", true);
+        creditos.SetBool("estaOculto", true);
+        salir.SetBool("estaOculto", true);
     }
 
     public void PruebaCreditos()
@@ -36,7 +47,25 @@ public class Menu : MonoBehaviour
 
     public void Jugar()
     {
+        StartCoroutine(OcultarBotonesYJugar());
+    }
 
+    public void Salir()
+    {
+        StartCoroutine(OcultarBotonesYSalir());
+    }
+
+    private IEnumerator OcultarBotonesYJugar()
+    {
+        OcultarBotones();
+        yield return new WaitForSeconds(1.0f);
+        GameManager.Instancia.Jugar();
+    }
+    private IEnumerator OcultarBotonesYSalir()
+    {
+        OcultarBotones();
+        yield return new WaitForSeconds(1.0f);
+        GameManager.Instancia.Salir();
     }
 
     public void Cerrar()

@@ -17,12 +17,12 @@ public class Cargando : MonoBehaviour
 
     private void Update()
     {
-        cargando.SetText($"Cargando: {barraProgreso.value * 100:0WD}%");
+        cargando.SetText($"Cargando: {barraProgreso.value * 100:0}%");
     }
 
     private IEnumerator CargarMenu()
     {
         yield return new WaitForSeconds(3.25f);
-        SceneManager.LoadScene("Menu");
+        GameManager.Instancia.MostrarMenu();
     }
 }

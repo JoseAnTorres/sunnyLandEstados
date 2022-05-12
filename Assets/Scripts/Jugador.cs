@@ -162,5 +162,9 @@ public class Jugador : MonoBehaviour
             estaEnEscalera = false;
             escaleraActual = null;
         }
+        if (other.gameObject.CompareTag("Nivel"))
+        {
+            Datos.Instancia.DecrementarVida();
+        }
     }
 }

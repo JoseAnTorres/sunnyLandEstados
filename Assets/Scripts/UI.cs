@@ -3,24 +3,16 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class UIManager : MonoBehaviour
+public class UI : MonoBehaviour
 {
-    public static UIManager Instancia { get; private set; }
     [SerializeField] private TextMeshProUGUI puntos;
     [SerializeField] private TextMeshProUGUI tiempo;
     [SerializeField] private TextMeshProUGUI vidas;
     [SerializeField] private TextMeshProUGUI gemas;
     [SerializeField] private float retardoAnimacionPuntos = 0.1f;
-    private void Awake() {
-        if (Instancia != null)
-        {
-            Destroy(gameObject);
-        }
-        Instancia = this;
-    }
     private void Start()
     {
-        Datos.Instancia.OnTiempoActualizado += ActualizarTiempo;
+        Datos.Instancia.OnTiempoRestanteActualizado += ActualizarTiempo;
         Datos.Instancia.OnPuntosActualizado += ActualizarPuntos;
         Datos.Instancia.OnVidasActualizado += ActualizarVidas;
         Datos.Instancia.OnGemasActualizado += ActualizarGemas;
@@ -47,7 +39,7 @@ public class UIManager : MonoBehaviour
         this.tiempo.SetText($"{tiempo / 60:00}:{tiempo % 60:00}");
     }
 
-    public void ActualizarVidas(int vidas)
+    public void ActualizarVidas(int vidas, bool decrementadas = false)
     {
         this.vidas.SetText($"{vidas}");
     }

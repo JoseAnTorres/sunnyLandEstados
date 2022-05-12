@@ -47,7 +47,7 @@ public abstract class Enemigo : MonoBehaviour
             }
             else
             {
-                Datos.Instancia.QuitarVida();
+                Datos.Instancia.DecrementarVida();
             }
         }
     }

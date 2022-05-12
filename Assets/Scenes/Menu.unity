@@ -490,7 +490,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 16811649}
         m_TargetAssemblyTypeName: Menu, Assembly-CSharp
-        m_MethodName: PruebaPulsado
+        m_MethodName: Jugar
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1959,7 +1959,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 16811649}
         m_TargetAssemblyTypeName: Menu, Assembly-CSharp
-        m_MethodName: PruebaPulsado
+        m_MethodName: Salir
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

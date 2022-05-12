@@ -12,6 +12,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Cargando.unity
     guid: 0e65ac18913b3c14b9fac50f37480b26
   - enabled: 1
+    path: Assets/Scenes/Nivel1.unity
+    guid: 576bf9f03b5d4506e8bf429d1e9f5046
+  - enabled: 1
+    path: Assets/Scenes/Nivel2.unity
+    guid: 2e5a364189be94f49b571fb3b046a8af
+  - enabled: 1
     path: Assets/Scenes/Menu.unity
     guid: 36665c8503b011e0e8684bf8477c4260
   m_configObjects: {}
