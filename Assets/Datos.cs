@@ -102,6 +102,11 @@ public class Datos : MonoBehaviour
         gemas--;
         OnGemasActualizado?.Invoke(gemas);
     }
+    public void RecogerVida()
+    {
+        vidas++;
+        OnVidasActualizado?.Invoke(vidas);
+    }
     private void ComprobarTiempo()
     {
         var tiempo = Time.time - tiempoInicio;
