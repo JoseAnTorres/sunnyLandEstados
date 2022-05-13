@@ -754,7 +754,7 @@ RectTransform:
   m_GameObject: {fileID: 555081674}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2054665656}
@@ -930,14 +930,12 @@ MonoBehaviour:
   m_text: 'GAME OVER
 
 
-    No has superado el Nivel x
+    No has superado el nivel x
 
     Puntuacion: xxxx
 
-    Tiempo:
+    Record:
     xxxx
-
-    Record: xxxx
 
 '
   m_isRightToLeft: 0
@@ -1904,7 +1902,7 @@ RectTransform:
   m_GameObject: {fileID: 1543302356}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1419284995}
@@ -2156,14 +2154,9 @@ MonoBehaviour:
   m_text: 'FELICIDADES
 
 
-    Has superado el Nivel x
+    Has superado el nivel x
 
     Puntuacion: xxxx
-
-    Tiempo:
-    xxxx
-
-    Record: xxxx
 
 '
   m_isRightToLeft: 0
