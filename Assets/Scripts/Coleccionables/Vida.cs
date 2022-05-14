@@ -7,5 +7,6 @@ public class Vida : Coleccionable
     protected override void Recoger()
     {
         Datos.Instancia.RecogerVida();
+        Audio.Instancia.PlayGema();
     }
 }

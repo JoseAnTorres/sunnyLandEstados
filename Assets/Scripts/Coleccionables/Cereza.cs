@@ -8,5 +8,6 @@ public class Cereza : Coleccionable
     protected override void Recoger()
     {
         Datos.Instancia.SumarPuntos(puntos);
+        Audio.Instancia.PlayCereza();
     }
 }

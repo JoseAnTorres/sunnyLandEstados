@@ -7,5 +7,6 @@ public class Gema : Coleccionable
     protected override void Recoger()
     {
         Datos.Instancia.RecogerGema();
+        Audio.Instancia.PlayGema();
     }
 }

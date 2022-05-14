@@ -11,6 +11,7 @@ public class Saltando : Estado
         base.Entrar();
         jugador.Saltar();
         jugador.SetParametroLogico("estaSaltando", true);
+        Audio.Instancia.PlaySalto();
     }
 
     public override void ActualizarLogica()

@@ -119,4 +119,18 @@ public class Datos : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
+    public int GetPuntos()
+    {
+        return puntos;
+    }
+
+    public int GetRecord()
+    {
+        var record = PlayerPrefs.GetInt("Puntos", 0);
+        if (puntos > record)
+        {
+            PlayerPrefs.SetInt("Puntos", puntos);
+        }
+        return record;
+    }
 }

@@ -44,6 +44,7 @@ public abstract class Enemigo : MonoBehaviour
                 destruyendo = true;
                 animador.SetTrigger("estaMuriendo");
                 Destroy(gameObject, 0.25f);
+                Audio.Instancia.PlayEnemigo();
             }
             else
             {

@@ -20,29 +20,25 @@ public class GameManager : MonoBehaviour
     #endregion
 
     public int NivelActual { get; private set; }
+    public bool GameOver { get; private set; }
     private void Start()
     {
         Datos.Instancia.OnTiempoRestanteActualizado += ActualizarTiempoRestante;
         Datos.Instancia.OnVidasActualizado += ActualizarVidas;
-        //Datos.Instancia.OnPuntosActualizado += Actua;
         Datos.Instancia.OnGemasActualizado += ActualizarGemas;
-    }
-
-    private void Update()
-    {
-        
     }
 
     public void MostrarMenu()
     {
         SceneManager.LoadScene("Menu");
+        Audio.Instancia.PlayIntroduccion();
     }
 
     public void ActualizarTiempoRestante(int tiempoRestante)
     {
         if (tiempoRestante <= 0)
         {
-            MostrarMenu();
+            MostrarResultados(true);
         }
     }
 
@@ -50,9 +46,12 @@ public class GameManager : MonoBehaviour
     {
         if(vidas <= 0)
         {
-            MostrarMenu();
-        }else if (decrementadas)
+            Audio.Instancia.PlayMuerte();
+            MostrarResultados(true);
+        }
+        else if (decrementadas)
         {
+            Audio.Instancia.PlayMuerte();
             ReiniciarNivel();
         }
     }
@@ -61,7 +60,7 @@ public class GameManager : MonoBehaviour
     {
         if (gemas <= 0)
         {
-            MostrarSiguienteNivel();
+            MostrarResultados(false);
         }
     }
 
@@ -70,22 +69,32 @@ public class GameManager : MonoBehaviour
         NivelActual = 1;
         SceneManager.LoadScene(1);
         Datos.Instancia.ReiniciarValores();
+        Audio.Instancia.PlayNivel();
     }
 
     public void ReiniciarNivel()
     {
         SceneManager.LoadScene(NivelActual);
         Datos.Instancia.EstablecerValores();
+        Audio.Instancia.PlayNivel();
     }
 
     public void MostrarSiguienteNivel()
     {
         SceneManager.LoadScene(++NivelActual);
         Datos.Instancia.EstablecerValores();
+        Audio.Instancia.PlayNivel();
     }
 
     public void Salir() {
         Application.Quit();
+    }
+
+    private void MostrarResultados(bool gameOver)
+    {
+        GameOver = gameOver;
+        SceneManager.LoadScene("Resultados");
+        Audio.Instancia.PlayIntroduccion();
     }
 
 }
